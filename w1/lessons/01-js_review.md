@@ -17,6 +17,8 @@ JavaScript primitive types:
 1. `null` - intentionally valueless
 1. `symbol` (es6)
 
+Mnemonic: Never stand behind Uncle Ned Smellypants
+
 Things to note:
 
 - Primitives are the basic building blocks of JavaScript.
@@ -24,6 +26,9 @@ Primitives are immutable.
 - Everything else is an object, which contains properties. Primitives are just value; they do not have any properties. That said, the `number`, `string`, and `boolean` primitives do have object versions (called reference types), with properties, as well: `Number`, `String`, `Boolean.`
 
 > **NOTE:** For more on JavaScript primitives, check out [The Secret Life of JavaScript Primitives](https://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/).
+**Notes from The Secret Life of JavaScript Primitives**:  
+* JS will coerce primitives into objects so that you can access properties like `length`
+* However, you cannot assign properties to primitives like you can objects.
 
 ### Reference Types
 
@@ -127,7 +132,14 @@ myFavoriteObject.someProperty = 'bar';    // What about this?
 Your turn!
 
 1. `const` vs `let` vs `var` - when should you use each?
+  * const - when you want to set a block-scoped variable that you don't want reassigned.
+  * let - to create a block-scoped local variable. useful for loops and conditionals where you don't want counters (eg `i`) to be available outside of the block
+  * var - for function-scoped local variables.
+  * If you don't use const, let, or var, the variable will be declared in the global scope.
 1. For more, check out the video [var, let and const - What, why and how](https://youtu.be/sjyJBL5fkp8?list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm).
+  * Notes: 
+    * "let is the new var" - he argues that there is no reason to use var anymore
+    * "use const unless you have to use let" to minimize mutable state. The less mutable, the less likely something is going to change that you didn't expect.
 
 ## Functions
 
@@ -152,12 +164,12 @@ Variable and function names are written in camelCase:
 
 ```javascript
 // function declaration
-function getFullName(first, last) {     
+function getFullName(first, last) {
   return first + ' ' + last
 }
 
 // variable declaration
-var firstName = 'Michael';                          
+var firstName = 'Michael';
 var lastName = 'Herman';
 
 // function invocation
@@ -204,7 +216,7 @@ Conditional statements are used to control the flow of a program:
 
 1. `if`
 1. `if`/`else`
-1. `if`/`else if`/`else``
+1. `if`/`else if`/`else`
 1. `switch`
 
 ### `if`
@@ -296,7 +308,7 @@ for (var char of str) {
 
 ### `for...in`
 
-`for...of` loops can be used to iterate through the properties of an object.
+`for...in` loops can be used to iterate through the properties of an object.
 
 ```javascript
 var obj = {  
@@ -311,7 +323,7 @@ for (var key in obj) {
 }
 ```
 
-> **NOTE:** Why did we use bracket notation (`obj[key]`)? Could we use dot notation (`obj.key`)? Why or why not?
+> **NOTE:** Why did we use bracket notation (`obj[key]`)? Could we use dot notation (`obj.key`)? Why or why not? _you can put strings or expressions in the brackets_
 
 ## Arrays
 
@@ -478,12 +490,12 @@ Let's look at a quick example...
 for (var i = 0; i < 10; i++) {
   // pass
 }
-console.log(i)    // what will this result in?
+console.log(i)    // what will this result in? - 10
 
 for (let j = 0, j < 10; j++) {
   // pass
 }
-console.log(j)    // what will this result in?
+console.log(j)    // what will this result in? - ReferenceError (j is not defined in the global scope)
 ```
 
 ## Template Strings
