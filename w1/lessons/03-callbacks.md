@@ -6,12 +6,29 @@ Again, a callback function is simply a function that is passed into another func
 
 > **NOTE:** Want to learn more about callbacks? Read [Understanding Callbacks in JavaScript](http://javascript.tutorialhorizon.com/2015/07/03/callback-function-javascript-tutorial/).  
 
+Notes:  
+* callback s are just functions that are passed into other functions to be called at a later point in time
+* jQuery is rife with callbacks
+
 ## Example
 
 Create a function that takes an array of website names and returns them formatted correctly.
 
 - Input: `['google', 'twitter', 'facebook']`
 - Output: `['www.google.com', 'www.twitter.com', 'www.facebook.com']`
+
+My solution:
+```javascript
+function convertToUrls(names){
+  let urls = names.map((name) => {
+    return "www." + name + ".com";
+  });
+  return urls;
+}
+
+let names = ['google', 'twitter', 'facebook'];
+console.log(convertToUrls(names));
+```
 
 Try this first without a callback:
 
@@ -65,7 +82,7 @@ module.exports = {
 Things to note:
 
 1. Notice how we separated the login (function definition) from the actual use (functional invocation). Essentially, you could write a number or reusable helper functions in the *utils.js* file so that you don't clutter your other files with unnecessary logic.
-1. What happens if we pass in `true` instead of an array? Try it! You should see `Please use an array of strings`. What's happening? Describe it to yourself out-loud or to a friend
+1. What happens if we pass in `true` instead of an array? Try it! You should see `Please use an array of strings`. What's happening? Describe it to yourself out-loud or to a friend _true would not pass the first conditional in the convert function, thus, the callback is called with the 'Please use an array of strings' passed to the callback in the err argument position. Hence, the callback logs out the error. Cool._
 
 Your turn!
 
@@ -76,12 +93,12 @@ Test this out on your own with the following code:
 ```javascript
 function createArray() {
   var arr = [];
-  for (var i = 1; i <= 1000; i++) {
+  for (var i = 1; i <= 1000; i++) { // create array of 1000 integers
      arr.push(i);
   }
   setTimeout(function() {
     return arr;
-  }, 5000);
+  }, 5000); // waits 5 seconds before returning the array. Sneaky!
 }
 
 function getEvenNumbers(arr) {
@@ -93,7 +110,7 @@ function getEvenNumbers(arr) {
 
 
 var numberArray = createArray();
-var evenNumberArray = getEvenNumbers(numberArray);
+var evenNumberArray = getEvenNumbers(numberArray); // runs as soon as the JS interpreter hits this line, regardless of whether or not the array has returned from createArray()
 console.log(evenNumberArray.length);
 ```
 
@@ -105,3 +122,29 @@ What happens when you run it? This highlights and issue with asynchronous code:
 So, in the above code, the `setTimeout()` simulates a long-winded process. If you do not wait for it to finish, `undefined` is passed in as the argument to `getEvenNumbers()`.  
 
 Add a callback to `createArray()` to fix the issue.
+
+Solution:
+```javascript
+
+function createArray(callback) {
+  var arr = [];
+  for (var i = 1; i <= 1000; i++) {
+    arr.push(i);
+  }
+  setTimeout(function() {
+    callback(null, arr);
+  }, 5000);
+}
+
+function getEvenNumbers(err, arr) {
+  if (err) console.log(err);
+
+  let evenNumbers = arr.filter(function(num){
+    return num % 2 === 0;
+  });
+
+  console.log(evenNumbers);
+}
+
+createArray(getEvenNumbers);
+```
