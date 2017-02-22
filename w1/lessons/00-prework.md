@@ -24,3 +24,6 @@ Work through the following [NodeSchool](https://nodeschool.io/) workshops:
 Make sure you complete javascripting and at least the first five learnyounode exercises. Create a new repository for each and push your code to GitHub. Try your best to work on this together. Send me the link once complete. Also, if you get stuck, please mark down what you're having problems with.
 
 Happy to meet at least once before the first workshop starts to help you through the pre-work.
+
+## My Solutions:
+I've pushed my solutions to these challenges here: [nodeschool solutions](https://github.com/etmoore/nodeschool)
