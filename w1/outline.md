@@ -12,7 +12,7 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 
 ## Day 0
 
-1. COMPLETE [Pre-work](lessons/00-prework.md) (please complete before the first session)
+1. [Pre-work](lessons/00-prework.md) (please complete before the first session) - COMPLETE
 
 ## Day 1
 
@@ -21,13 +21,13 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 
 Outline:
 
-1. [JavaScript Review](lessons/01-js_review.md)
-1. [Higher-Order Functions](lessons/02-hof.md)
-1. [Callbacks](lessons/03-callbacks.md)
+1. [JavaScript Review](lessons/01-js_review.md) - COMPLETE
+1. [Higher-Order Functions](lessons/02-hof.md) - COMPLETE
+1. [Callbacks](lessons/03-callbacks.md) - COMPLETE
 1. Homework
-  - Review the above lessons, paying close attention to the *Your turn!* parts.
-  - Finish working through learnyounode
-  - Work through as many of the [challenges](challenges) as you can
+  - Review the above lessons, paying close attention to the *Your turn!* parts. - COMPLETE
+  - Finish working through learnyounode - COMPLETE - solutions: [nodeschool solutions](http://www.github.com/etmoore/nodeschool)
+  - Work through as many of the [challenges](challenges) as you can - COMPLETE
 
 ## Day 2
 
@@ -45,7 +45,7 @@ Outline:
 1. Homework
   - Review the above lessons, paying close attention to the *Your turn!* parts.
   - Read through either [Atom for Web Developers](http://mherman.org/blog/2016/08/16/atom-for-web-developers) or [Sublime Text for Web Developers](http://mherman.org/blog/2015/02/05/sublime-text-for-web-developers). Make sure to install the linters!
-  - Finish the [challenges](challenges).
+  - Finish the [challenges](challenges). - COMPLETE
   - If you have time, create a new API, using the Express Generator, with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
 
 ## Day 3
