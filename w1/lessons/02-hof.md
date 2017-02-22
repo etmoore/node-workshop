@@ -77,21 +77,34 @@ Thus far, we've looked at higher order functions that we defined. Let's look at 
 A `forEach()` function is used for basic iteration, similar to a `for` loop. Here's how we can use it to sum the elements of an array:
 
 ```javascript
-var total = 0;
-var numbers = [2, 5, 3, 4];
+var total = 0; // initialize total to 0
+var numbers = [2, 5, 3, 4]; // assign numbers to array containing 4 numbers
 
-numbers.forEach(function(num) {
-  total += num;
+numbers.forEach(function(num) { // for each item in the array, execute the callback function, passing in the number
+  total += num; // add the number to the total
 });
 
-console.log(total);
+console.log(total); // log the total
 ```
 
 Your Turn!
 
 1. What's happening here? Describe it to yourself out-loud or to a friend.
-1. Would we have access to `total` in the `console.log` if it were defined within the `forEach()` function?
+1. Would we have access to `total` in the `console.log` if it were defined within the `forEach()` function? _No, it would be contained in that local scope and would inaccessible in the global scope (where the console.log is._
 1. Exercise: Given an array of numbers, use `forEach()` to find the minimum value in that array.
+
+```javascript
+let array = [4, 1, 2, 3];
+let min = array[0]; // initialize the minimum value to the first item in the array
+
+array.forEach(function(num){
+  if (num < min){
+    min = num;
+  }
+});
+
+console.log(min);
+```
 
 ## `map`
 
@@ -138,6 +151,16 @@ Your Turn!
 1. What's happening here? Compare each method used above. Essentially, if you need to iterate through an array, do something to each element, and then return an array, you should always use `map()`.
 1. Exercise: Given an array of letters (`['a', 'd', 'F', 'z']`), use `map()`  to convert each letter to uppercase.
 
+_Solution:_
+```javascript
+let letters = ['a', 'd', 'F', 'z'];
+var upperCaseLetters = letters.map(function(l){
+  return l.toUpperCase();
+});
+
+console.log(upperCaseLetters);
+```
+
 ## `filter`
 
 `filter()`, which also creates an array, is used for iterating through an array and removing any elements based on a given condition.
@@ -181,7 +204,7 @@ console.log(fordCars);
 // filter()
 
 var allFordCars = cars.filter(function(car) {
-  return car.make === 'Ford';
+  return car.make === 'Ford'; // if this equality comparison returns true, then the car gets added to the array. If it returns false, the car does not get added. Hence, filtering.
 });
 
 console.log(allFordCars);
@@ -191,6 +214,18 @@ Your Turn!
 
 1. What's happening here - `return car.make === 'Ford';`? Describe it to yourself out-loud or to a friend. Then compare each method used above. Essentially, if you find yourself iterating through an array and then testing to see if element meets a certain condition, then you should use a `filter()`.
 1. Exercise: Given an array of letters (`['a', 'd', 'F', 'z']`), use `filter()`  to return just the vowels.
+
+Solution:
+```javascript
+let letters = ['a', 'd', 'F', 'z'];
+let vowelString = 'aeiou';
+
+let vowels = letters.filter(function(l){
+  return vowelString.includes(l);
+});
+
+console.log(vowels);
+```
 
 ## Arrow Functions
 
