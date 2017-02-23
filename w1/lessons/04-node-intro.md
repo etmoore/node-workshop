@@ -32,7 +32,7 @@ So, why would you want to use Node for web development?
 
 1. One language on the client and server
 1. Huge community!
-1. Async out-of-the-box, which is great for web development - why?
+1. Async out-of-the-box, which is great for web development - why? _Because there's a lot that happens over the network, and you don't know how long that stuff will take. Async means that your program won't be blocked._
 1. Great for JSON APIs, I/O (not so great for CPU-intensive apps)
 
 ## Basic Examples
@@ -88,7 +88,7 @@ module.exports = {
 Run:
 
 ```
-$ node test.js 1234567890
+$ node goodbye.js 1234567890
 { numbers: '1234567890', goodbye: 'Goodbye, Node' }
 1234567890
 Goodbye, Node
@@ -116,11 +116,11 @@ server.listen(3000);
 console.log('Server listening on localhost:3000');
 ```
 
-Run the file, then navigate to http://localhost:3000/ in your browser. What do you see? Open the network tab with the JavaScript console. Refresh the page. What do you see?
+Run the file, then navigate to http://localhost:3000/ in your browser. What do you see? Open the network tab with the JavaScript console. Refresh the page. What do you see? _Hello, World_
 
 Your turn!
 
-1. Modify the above code to return the following JSON object instead of HTML:
+1. Modify the above code to return the following JSON object instead of HTML: - DONE (see [node-basics server.js](node-basics/server.js))
 
   ```json
   {
@@ -152,15 +152,15 @@ fs.readFile(file, 'utf8', function(err, data) {
 });
 ```
 
-Make sure to create a new file called *text.txt* and add in some ipsum text from [Hipster Ipsum](https://hipsum.co/). Run the file. What do you see?
+Make sure to create a new file called *text.txt* and add in some ipsum text from [Hipster Ipsum](https://hipsum.co/). Run the file. What do you see? _My text!_
 
 Questions:
 
-1. What is `fs`?
-1. What is `path`?
-1. What does `path.join()` do?
-1. What is `__dirname`?
-1. What does `utf8` do?
+1. What is `fs`? _It's a node module that has methods for interacting with the filesystem._
+1. What is `path`? _module that provides utilities for working with file and directory paths_
+1. What does `path.join()` do? _concatenates path segments_
+1. What is `__dirname`? _a variable local to the module that is the directory (full path) of the current module_
+1. What does `utf8` do? _sets the encoding to utf8 so that the data is a string rather than a buffer_
 
 ### Creating Files
 
@@ -180,14 +180,15 @@ fs.writeFile(file, 'Hi!', function(err) {
   }
 });
 ```
+_Well would you look at that! We created a file and wrote to it. Neat._
 
-## Exercise One
+## Exercise One - COMPLETE (see [node-intro-exercises/exercise1.js](../node-intro-exercises/exercise1.js))
 
 Read *lessons/data/01_data.json* and iterate through the array:
 
 1. Create a CSV file, where the header is made up of the keys from each object.
 1. Only add data to the CSV file if the last name starts with the letters A through M
 
-## Exercise Two
+## Exercise Two - COMPLETE (see [node-intro-exercises/exercise2-http-server.js](../node-intro-exercises/exercise2-http-server.js))
 
 Create an HTTP server that listens on port 8080. When a user navigates to http://localhost:8080/, read in the CSV that you made in the previous exercise, convert it to JSON - an array of objects - where the keys for each object are made from each column in the head of the CSV.

@@ -39,7 +39,7 @@ Outline:
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. [Intro to Node](lessons/04-node-intro.md)
+1. [Intro to Node](lessons/04-node-intro.md) - COMPLETE
 1. [Intro to Express](lessons/05-express-intro.md)
 1. [RESTful APIs with Express](lessons/06-express-rest.md)
 1. Homework
