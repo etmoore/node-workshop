@@ -70,7 +70,7 @@ This, in turn, sends an HTML *response* (`Hello World`) to the client. So, a [ro
 
 Your Turn!
 
-1. What's happening here? Describe it to yourself out-loud or to a friend.
+1. What's happening here? Describe it to yourself out-loud or to a friend. _By using express, we saved ourselves from having to write a lot of Node code to handle a simple route. We instantiated an express application. When it recieved an HTTP GET request at the / route, it fired the callback in the get route defined above._
 1. Exercise: Modify the above code to return the following JSON object:
 
   ```json
@@ -80,7 +80,7 @@ Your Turn!
   }
   ```
 
-1. How did you figure out how to modify the code? Which resources did you use?
+1. How did you figure out how to modify the code? Which resources did you use? _I knew that I needed to change the code in the route callback. I intuited this from the previous node intro exercises_
 
 ## Routes
 
@@ -100,7 +100,7 @@ To test, kill the server in your terminal with CTRL-D and then fire it back up. 
 
 Your Turn!
 
-1. Set up a new route. Add inline code comments, describing what's happening on each line. Read the comments out-loud to yourself or to a friend.
+1. Set up a new route. Add inline code comments, describing what's happening on each line. Read the comments out-loud to yourself or to a friend. - DONE, books
 
 ## URL Parameters
 
@@ -124,12 +124,12 @@ So, `name` is the url parameter. This is simply a placeholder, which gets replac
 
 Test this out!
 
-> **NOTE:** Don't forget the `:` in the route! What happens if you forget it?
+> **NOTE:** Don't forget the `:` in the route! What happens if you forget it? _express doesn't reconize route_  "Cannot GET hello/evan"
 
 Your Turn!
 
-1. We did forgot to capitalize the first letter of the name. Assign the URL parameter to a variable and then capitalize it correctly before sending back the response.
-1. Add a new route handler to respond with the folling JSON object when a user navigates to `localhost:3000/user/michael/33/javascript`:
+1. We did forgot to capitalize the first letter of the name. Assign the URL parameter to a variable and then capitalize it correctly before sending back the response. - DONE
+1. Add a new route handler to respond with the folling JSON object when a user navigates to `localhost:3000/user/michael/33/javascript`: - DONE
 
   ```json
   {
@@ -152,7 +152,7 @@ First, install [Nodemon](https://nodemon.io/):
 $ npm install nodemon --global
 ```
 
-The `--global` flag installs this in our global packages so that way it's available to all our Node projects. Do you think we should also install this locally and add dependency to the *package.json* file? Why or why not?
+The `--global` flag installs this in our global packages so that way it's available to all our Node projects. Do you think we should also install this locally and add dependency to the *package.json* file? Why or why not? - NO, it's not required to run this app, so it shouldn't be listed as a dependency. It's a tool that we'll use locally for convenience, and we want to be able to access it in any project, so we should only install it globally.
 
 Next, add an npm start script to *package.json*:
 
@@ -196,12 +196,12 @@ Let's build a basic calculator together...
 
 1. Create a new project.
 1. Before you write any code, make sure everything is wired up correctly and get a sanity check. Why is this important?
-1. Set up the following four routes:
+1. Set up the following four routes: - DONE
   - `/calc/add/:num1/:num2`
   - `/calc/sub/:num1/:num2`
   - `/calc/mult/:num1/:num2`
   - `/calc/div/:num1/:num2`
-1. Respond with JSON:
+1. Respond with JSON: - DONE
 
   ```json
   {
@@ -253,7 +253,7 @@ app.use(function (req, res, next) {
 
 Here, we log the IP address to the console and then call `next()`, which passes the request to the next middleware function.
 
-1. What is the next middleware function?
-1. What happens if there is not another middleware function?
+1. What is the next middleware function? _it's the next function (by order) in the app file. A callback._
+1. What happens if there is not another middleware function? _an error?_
 
 > **NOTE:** Middleware functions must either pass the request to the next middleware function via `next()` or send a response back to the client.
