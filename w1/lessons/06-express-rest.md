@@ -14,7 +14,7 @@ REST is a architectural style for handling communication between the client and 
 
 In the above example, `tweets` is the resource. You refer to all tweets as the collection while a single tweet is an element.
 
-> **NOTE:** Please read [REST Quick Tips](http://www.restapitutorial.com/lessons/restquicktips.html) for more info on structuring a RESTful app.
+> **NOTE:** Please read [REST Quick Tips](http://www.restapitutorial.com/lessons/restquicktips.html) for more info on structuring a RESTful app. - DONE
 
 ## Express Generator
 

@@ -40,13 +40,13 @@ Outline:
   - How did the homework go?
   - What did we cover last time?
 1. [Intro to Node](lessons/04-node-intro.md) - COMPLETE
-1. [Intro to Express](lessons/05-express-intro.md)
-1. [RESTful APIs with Express](lessons/06-express-rest.md)
+1. [Intro to Express](lessons/05-express-intro.md) - COMPLETE
+1. [RESTful APIs with Express](lessons/06-express-rest.md) - COMPLETE
 1. Homework
   - Review the above lessons, paying close attention to the *Your turn!* parts.
   - Read through either [Atom for Web Developers](http://mherman.org/blog/2016/08/16/atom-for-web-developers) or [Sublime Text for Web Developers](http://mherman.org/blog/2015/02/05/sublime-text-for-web-developers). Make sure to install the linters!
   - Finish the [challenges](challenges). - COMPLETE
-  - If you have time, create a new API, using the Express Generator, with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees...
+  - If you have time, create a new API, using the Express Generator, with the resources of your choice - i.e., cars, animals, cookies, bikes, bananas, coffees... - WILL DO LATER
 
 ## Day 3
 
