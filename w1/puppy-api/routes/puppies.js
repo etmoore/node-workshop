@@ -33,15 +33,15 @@ router.get('/:id', function(req, res, next){
 
 router.post('/', function(req, res, next){
   // res.send('posting to the puppies resource... new puppy!');
-  var puppyData = req.body;
+  var formData = req.body;
   var id = puppies.length + 1;
 
   var newPuppy = {
     id: puppies.length + 1,
-    name: puppyData.name,
-    breed: puppyData.breed,
-    tendencies: puppyData.tendencies.split(','),
-    alive: (puppyData.alive === "true"), // converts string to boolean
+    name: formData.name,
+    breed: formData.breed,
+    tendencies: formData.tendencies.split(','),
+    alive: (formData.alive === "true"), // converts string to boolean
   };
 
   puppies.push(newPuppy);
@@ -52,13 +52,30 @@ router.post('/', function(req, res, next){
 
 router.put('/:id', function(req, res, next){
   var id = parseInt(req.params.id);
-  res.send(`put to the puppy, id: ${id}. Update that pup!`);
+  var puppy = puppies.filter(puppy => puppy.id === id);
+  puppies = puppies.filter(puppy => puppy.id !== id); // remove the puppy that's being operated on
+  var formData = req.body;
+
+  var updatedPuppy = {
+    id: id,
+    name: formData.name,
+    breed: formData.breed,
+    tendencies: formData.tendencies.split(','),
+    alive: (formData.alive === "true"), // converts string to boolean
+  };
+
+  puppies.push(updatedPuppy);
+  fs.writeFileSync(dataPath, JSON.stringify(puppies));
+
+  res.redirect('/puppies');
 });
 
 router.delete('/:id', function(req, res, next){
   var id = parseInt(req.params.id);
-  res.send(`delete puppy, id: ${id}. Bye bye, pup!`);
-});
+  puppies = puppies.filter(puppy => puppy.id !== id); // remove the puppy that's being terminated
+  fs.writeFileSync(dataPath, JSON.stringify(puppies));
 
+  res.redirect('/puppies');
+});
 
 module.exports = router;
