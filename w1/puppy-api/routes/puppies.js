@@ -1,43 +1,10 @@
+var fs = require('fs');
+var path = require('path');
 var express = require('express');
 var router = express.Router();
+var dataPath = path.join(__dirname, '../data/puppies.json');
 
-var puppies = [
-  {
-    id: 1,
-    name: 'Jim',
-    breed: 'Collie',
-    tendencies: ['pees on trees'],
-    alive: true
-  },
-  {
-    id: 2,
-    name: 'John',
-    breed: 'Bulldog',
-    tendencies: ['bites faces'],
-    alive: true
-  },
-  {
-    id: 3,
-    name: 'Emily',
-    breed: 'Doxon',
-    tendencies: ['tricks', 'singing'],
-    alive: false
-  },
-  {
-    id: 4,
-    name: 'Harrison',
-    breed: 'Golden Retriever',
-    tendencies: ['retrieving things', 'tolerant of insults'],
-    alive: true
-  },
-  {
-    id: 5,
-    name: 'Harrison',
-    breed: 'Pitbull',
-    tendencies: ['cuddling'],
-    alive: true
-  }
-];
+var puppies = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
 // GET all puppies
 router.get('/', function(req, res, next) {
@@ -49,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 // GET a single puppy
 router.get('/:id', function(req, res, next){
-  var id = parseInt(req.params.id)
+  var id = parseInt(req.params.id);
   var singlePuppy = puppies.filter(puppy => puppy.id === id)[0];
   if (singlePuppy) {
     res.json({
@@ -63,5 +30,35 @@ router.get('/:id', function(req, res, next){
     });
   }
 });
+
+router.post('/', function(req, res, next){
+  // res.send('posting to the puppies resource... new puppy!');
+  var puppyData = req.body;
+  var id = puppies.length + 1;
+
+  var newPuppy = {
+    id: puppies.length + 1,
+    name: puppyData.name,
+    breed: puppyData.breed,
+    tendencies: puppyData.tendencies.split(','),
+    alive: (puppyData.alive === "true"), // converts string to boolean
+  };
+
+  puppies.push(newPuppy);
+  fs.writeFileSync(dataPath, JSON.stringify(puppies));
+
+  res.redirect('/puppies');
+});
+
+router.put('/:id', function(req, res, next){
+  var id = parseInt(req.params.id);
+  res.send(`put to the puppy, id: ${id}. Update that pup!`);
+});
+
+router.delete('/:id', function(req, res, next){
+  var id = parseInt(req.params.id);
+  res.send(`delete puppy, id: ${id}. Bye bye, pup!`);
+});
+
 
 module.exports = router;
