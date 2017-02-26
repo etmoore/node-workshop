@@ -60,7 +60,7 @@ Outline:
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. [Review](lessons/07-review.md)
+1. [Review](lessons/07-review.md) - DONE
 1. [CRUD Project - Movie Mania!](lessons/08-movie-mania.md)
 1. [Full-Stack App](lessons/09-fullstack-app.md)
 1. Homework:
