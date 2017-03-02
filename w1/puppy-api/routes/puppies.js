@@ -32,12 +32,11 @@ router.get('/:id', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-  // res.send('posting to the puppies resource... new puppy!');
   var formData = req.body;
   var id = puppies.length + 1;
 
   var newPuppy = {
-    id: puppies.length + 1,
+    id,
     name: formData.name,
     breed: formData.breed,
     tendencies: formData.tendencies.split(','),
