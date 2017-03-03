@@ -70,7 +70,7 @@ getFirstChar('test', function(err, res) {
 1. Write a function called `repeater()` that takes a string and an integer as arguments, and returns the string repeated that many number of times.
   - Input: `3, 'blah'`
   - Output: `blahblahblah`
-1. Write a function called `reverseWord() that takes a string as an argument and returns the reverse of that string.
+1. Write a function called `reverseWord()` that takes a string as an argument and returns the reverse of that string.
   - Input: `'hello'`
   - Output: `'olleh'`
 1. Write a function called `factorial()` that takes an integer as an argument and returns the factorial of a number.
@@ -81,7 +81,7 @@ getFirstChar('test', function(err, res) {
   - Output: `'father'`
 1. Write a function called `getTruthy()` that takes an array, and returns a filtered array. The filtered array should only contain the `truthy` values from the initial array.
   - Input: `['hi', null, false, 10, 0]`
-  - Output: `['hi, 10']`
+  - Output: `['hi', 10]`
 * Write a function called `getUnique()` that takes two arrays as arguments, and returns an array of all elements that are only in one array.
   - Input: `[1, 2, 3], [1, 2, 4, 5]`
   - Output: `[3, 4, 5]`
