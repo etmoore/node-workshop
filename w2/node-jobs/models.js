@@ -54,9 +54,15 @@ function createNewJob(newJob){
   return newJob;
 }
 
+function deleteJob(id) {
+  jobs = jobs.filter(job => job.id !== id);
+  return true;
+}
+
 module.exports = {
   getAllJobs,
   createNewJob,
   getJob,
   updateJob,
+  deleteJob,
 };

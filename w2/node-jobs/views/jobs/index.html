@@ -24,7 +24,7 @@
       <td>{{ job.email }}</td>
       <td>{{ "yes" if job.contacted === true else "no" }}</td>
       <td><a class="btn btn-warning" href="jobs/{{job.id}}/update">Update</a></td>
-      <td><a class="btn btn-danger">Delete</a></td>
+      <td><a class="btn btn-danger" href="jobs/{{job.id}}/delete">Delete</a></td>
     </tr>
     {% endfor %}
   </table>
