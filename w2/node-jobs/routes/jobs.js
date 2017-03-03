@@ -39,4 +39,11 @@ router.post('/:id', (req, res, next) => {
 });
 
 
+/*** delete job ***/
+router.get('/:id/delete', (req, res, next) => {
+  let id = parseInt(req.params.id);
+  model.deleteJob(id);
+  res.redirect('/jobs');
+});
+
 module.exports = router;
