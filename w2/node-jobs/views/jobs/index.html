@@ -23,7 +23,7 @@
       <td>{{ job.company }}</td>
       <td>{{ job.email }}</td>
       <td>{{ "yes" if job.contacted === true else "no" }}</td>
-      <td><a class="btn btn-warning">Update</a></td>
+      <td><a class="btn btn-warning" href="jobs/{{job.id}}/update">Update</a></td>
       <td><a class="btn btn-danger">Delete</a></td>
     </tr>
     {% endfor %}

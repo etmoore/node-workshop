@@ -1,4 +1,4 @@
-const jobs = [
+let jobs = [
   {
     id: 1,
     title: "chief senior officer",
@@ -35,6 +35,18 @@ function getAllJobs(){
   return jobs;
 }
 
+function getJob(id){
+  return jobs.filter(job => job.id === id)[0];
+}
+
+function updateJob(data, id){
+  data.contacted = data.contacted === 'on' ? true : false;
+  data.id = id;
+  jobs = jobs.filter(job => job.id !== id);
+  jobs.push(data);
+  return jobs.filter(job => job.id === id);
+}
+
 function createNewJob(newJob){
   newJob.contacted = newJob.contacted === 'on' ? true : false;
   newJob.id = _generateId();
@@ -45,4 +57,6 @@ function createNewJob(newJob){
 module.exports = {
   getAllJobs,
   createNewJob,
+  getJob,
+  updateJob,
 };
