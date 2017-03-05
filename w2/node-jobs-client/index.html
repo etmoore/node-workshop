@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Node Jobs</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>All Jobs</h1>
+
+      <a class="btn btn-primary" href="/jobs/new">New Job</a>
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Company</th>
+          <th>Email</th>
+          <th>Contacted</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>title</td>
+          <td>description</td>
+          <td>company</td>
+          <td>email</td>
+          <td>contacted</td>
+          <td><a class="btn btn-warning" href="jobs/{{job.id}}/update">Update</a></td>
+          <td><a class="btn btn-danger" href="jobs/{{job.id}}/delete">Delete</a></td>
+        </tr>
+        <!-- {% for job in jobs %} -->
+        <!-- <tr> -->
+        <!--   <td>{{ job.id }}</td> -->
+        <!--   <td>{{ job.title }}</td> -->
+        <!--   <td>{{ job.description }}</td> -->
+        <!--   <td>{{ job.company }}</td> -->
+        <!--   <td>{{ job.email }}</td> -->
+        <!--   <td>{{ "yes" if job.contacted === true else "no" }}</td> -->
+        <!--   <td><a class="btn btn-warning" href="jobs/{{job.id}}/update">Update</a></td> -->
+        <!--   <td><a class="btn btn-danger" href="jobs/{{job.id}}/delete">Delete</a></td> -->
+        <!-- </tr> -->
+        <!-- {% endfor %} -->
+      </table>
+    </div>
+
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+  </body>
+</html>
