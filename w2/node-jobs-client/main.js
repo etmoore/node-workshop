@@ -4,9 +4,31 @@ $(function() {
     .fail(err => console.log(err));
 });
 
-function getAllJobs() {
-  return $.getJSON('http://localhost:3000/');
-}
+
+$('body').on('click', '.delete-job', function(){
+  // TODO: add confirm; if no more jobs, display message
+  let id = $(this).data('id');
+  $(this).parents('tr').remove(); // remove the row from the table
+  deleteJob(id) // make DELETE request to api
+    .done(data => console.log(data))
+    .fail(err => console.log(err));
+});
+
+$('.modal').on('submit', 'form', function(e){
+  e.preventDefault();
+  let dataString = $('form').serialize();
+
+  addJob(dataString)
+    .then(() => {
+      $('form').find("input, textarea").val("");
+      $('#contacted').prop('checked', false);
+      $('tbody').html('');
+    })
+    .then(getAllJobs)
+    .then(buildJobsTable)
+    .then(() => $('#myModal').modal('toggle'))
+    .catch(err => console.log(err));
+});
 
 function buildJobsTable(jobs){
   jobs.forEach(job => {
@@ -22,26 +44,5 @@ function buildJobsTable(jobs){
           <td><a class="delete-job btn btn-danger" data-id=${job.id}>Delete</a></td>
         </tr>`
     );
-  });
-}
-
-// add job
-function addJob() {}
-
-// update job
-function updateJob() {}
-
-// delete job
-$('body').on('click', '.delete-job', function(){
-  let id = $(this).data('id');
-  $(this).parents('tr').remove(); // remove the row from the table
-  deleteJob(id) // make DELETE request to api
-    .done(data => console.log(data))
-    .fail(err => console.log(err));
-});
-
-function deleteJob(id) {
-  return $.ajax(`http://localhost:3000/${id}`, {
-    method: "DELETE",
   });
 }
