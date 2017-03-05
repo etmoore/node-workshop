@@ -7,6 +7,7 @@ const nunjucks = require('nunjucks');
 
 const index = require('./routes/index');
 const jobs = require('./routes/jobs');
+const jobsApi = require('./routes/api.js');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/jobs', jobs);
+app.use('/api/v1/jobs', jobsApi);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
