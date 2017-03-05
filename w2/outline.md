@@ -47,8 +47,8 @@ By the end of this session, you should be able to...
   - Finish [node-jobs](exercises/node-jobs) - DONE... except for the confirm delete dialogue
   - Refactor all of the [challenges](challenges/README.md) - refactor logic into a module (*helpers.js*), use promises, resolve promise from separate file (*app.js*), [example](challenges/modular-example) - DONE
   - Read [A Proper API Crash Course](https://github.com/james-gibson/apiTips) - DONE
-  - Add a RESTful API to [node-jobs](exercises/node-jobs) - GET ALL jobs, get SINGLE job, add job, update job, delete job
-  - Build a full-stack app, with server-side templating, from scratch
+  - Add a RESTful API to [node-jobs](exercises/node-jobs) - GET ALL jobs, get SINGLE job, add job, update job, delete job - DONE
+  - Build a full-stack app, with server-side templating, from scratch - STARTED
   - Review [herman-express-generator](https://github.com/mjhea0/generator-herman-express) - install, create boilerplate, review code, add comments
 
 ## Day 2
