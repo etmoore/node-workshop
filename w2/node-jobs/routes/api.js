@@ -21,7 +21,7 @@ router.get('/:id', (req, res, next) => {
 router.post('/new', (req, res, next) => {
   model.createNewJob(req.body)
     .then(newJob => res.redirect(newJob.id.toString()))
-    .catch(err => res.status(500).json({error: err}));
+    .catch(err => res.status(400).json({error: err}));
 });
 
 /*** update job ***/
@@ -29,7 +29,7 @@ router.post('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
   model.updateJob(req.body, id)
     .then(job => res.redirect(job.id.toString()))
-    .catch(err => res.status(500).send(err));
+    .catch(err => res.status(400).send(err));
 });
 
 
@@ -38,7 +38,7 @@ router.get('/:id/delete', (req, res, next) => {
   let id = parseInt(req.params.id);
   model.deleteJob(id)
     .then(data => res.json(data))
-    .catch(err => res.status(500).send(err));
+    .catch(err => res.status(400).send(err));
 });
 
 module.exports = router;
