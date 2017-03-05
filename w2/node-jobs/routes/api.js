@@ -25,7 +25,7 @@ router.post('/new', (req, res, next) => {
 });
 
 /*** update job ***/
-router.post('/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
   model.updateJob(req.body, id)
     .then(job => res.redirect(job.id.toString()))
@@ -34,7 +34,7 @@ router.post('/:id', (req, res, next) => {
 
 
 /*** delete job ***/
-router.get('/:id/delete', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
   model.deleteJob(id)
     .then(data => res.json(data))
