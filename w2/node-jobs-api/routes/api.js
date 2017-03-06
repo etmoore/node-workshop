@@ -18,7 +18,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 /*** new job***/
-router.post('/new', (req, res, next) => {
+router.post('/', (req, res, next) => {
   model.createNewJob(req.body)
     .then(newJob => res.redirect(newJob.id.toString()))
     .catch(err => res.status(400).json({error: err}));
