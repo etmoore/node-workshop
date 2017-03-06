@@ -1,0 +1,31 @@
+{% extends "../_layout.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+
+  <a class="btn btn-primary" href="/jobs/new">New Job</a>
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Copyright</th>
+      <th>Pages</th>
+      <th>Completed</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.copyright }}</td>
+      <td>{{ book.pages }}</td>
+      <td>{{ "yes" if book.completed === true else "no" }}</td>
+      <td><a class="btn btn-warning" href="books/{{book.id}}/update">Update</a></td>
+      <td><a class="btn btn-danger" href="books/{{book.id}}/delete">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
