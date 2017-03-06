@@ -1,7 +1,7 @@
 $(function() {
   getAllJobs()
     .done(jobs => buildJobsTable(jobs))
-    .fail(err => console.log(err));
+    .fail(console.error);
 });
 
 
@@ -10,8 +10,7 @@ $('body').on('click', '.delete-job', function(){
   let id = $(this).data('id');
   $(this).parents('tr').remove(); // remove the row from the table
   deleteJob(id) // make DELETE request to api
-    .done(data => console.log(data))
-    .fail(err => console.log(err));
+    .fail(console.error);
 });
 
 $('#new-job-modal').on('submit', '#new-job-form', function(e){
@@ -21,7 +20,7 @@ $('#new-job-modal').on('submit', '#new-job-form', function(e){
 
   addJob(dataString)
     .then(() => {
-      $('form').find("input, textarea").val("");
+      $('#new-job-form').find("input, textarea").val("");
       $('#job-contacted').prop('checked', false);
       $('tbody').html('');
     })
@@ -49,18 +48,18 @@ $('#update-job-modal').on('submit', '#update-job-form', function(e){
   e.preventDefault();
 
   let id = $("#job-id").val();
-  let dataString = $('form').serialize();
+  let dataString = $('#update-job-form').serialize();
 
   updateJob(id, dataString)
     .then(() => {
-      $('form').find("input, textarea").val("");
+      $('#update-job-form').find("input, textarea").val("");
       $('#job-contacted').prop('checked', false);
       $('tbody').html('');
     })
     .then(getAllJobs)
     .then(buildJobsTable)
     .then(() => $('#update-job-modal').modal('toggle'))
-    .catch(err => console.log(err));
+    .catch(console.error);
 });
 
 function buildJobsTable(jobs){
@@ -73,7 +72,7 @@ function buildJobsTable(jobs){
           <td>${job.company}</td>
           <td>${job.email}</td>
           <td>${job.contacted ? "yes" : "no"}</td>
-          <td><a class="update-job btn btn-warning" data-id=${job.id} data-toggle="modal" data-target="#updateJobModal">Update</a></td>
+          <td><a class="update-job btn btn-warning" data-id=${job.id} data-toggle="modal" data-target="#update-job-modal">Update</a></td>
           <td><a class="delete-job btn btn-danger" data-id=${job.id}>Delete</a></td>
         </tr>`
     );
