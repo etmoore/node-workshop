@@ -68,10 +68,10 @@ function updateJob(data, id){
   return new Promise((resolve, reject) => {
     if (!data || !id)
       reject('Unable to complete request');
+    data.contacted = data.contacted === 'on' ? true : false;
     if (!hasRequiredFields(data))
       reject('Missing required data');
     data.id = id;
-    data.contacted = data.contacted === 'on' ? true : false;
     jobs = jobs.filter(job => job.id !== id);
     jobs.push(data);
     let updatedJob = jobs.filter(job => job.id === id)[0];
@@ -81,10 +81,10 @@ function updateJob(data, id){
 
 function createNewJob(newJob){
   return new Promise((resolve, reject) => {
+    newJob.contacted = newJob.contacted === 'on' ? true : false;
     if (!hasRequiredFields(newJob)) {
       reject('Please make a POST request with the required Job data');
     }
-    newJob.contacted = newJob.contacted === 'on' ? true : false;
     newJob.id = generateId();
     jobs.push(newJob);
     resolve(newJob);
