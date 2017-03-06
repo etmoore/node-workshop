@@ -20,7 +20,7 @@ router.get('/:id', (req, res, next) => {
 /*** new job***/
 router.post('/', (req, res, next) => {
   model.createNewJob(req.body)
-    .then(newJob => res.redirect(newJob.id.toString()))
+    .then(newJob => res.json(newJob))
     .catch(err => res.status(400).json({error: err}));
 });
 
@@ -28,7 +28,7 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
   model.updateJob(req.body, id)
-    .then(job => res.redirect(job.id.toString()))
+    .then(job => res.json(job))
     .catch(err => res.status(400).send(err));
 });
 
