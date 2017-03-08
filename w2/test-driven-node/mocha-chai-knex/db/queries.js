@@ -8,6 +8,11 @@ function getAll() {
   return Shows().select(); // jshint ignore:line
 }
 
+function getSingle(showID) {
+  return Shows().where('id', parseInt(showID)).first(); // jshint ignore:line
+}
+
 module.exports = {
-  getAll: getAll,
+  getAll,
+  getSingle,
 };
