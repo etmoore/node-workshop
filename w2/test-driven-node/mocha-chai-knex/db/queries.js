@@ -16,8 +16,13 @@ function add(show) {
   return Shows().insert(show, 'id'); // jshint ignore:line
 }
 
+function update(showID, updates) {
+  return Shows().where('id', parseInt(showID)).update(updates); // jshint ignore:line
+}
+
 module.exports = {
   getAll,
   getSingle,
   add,
+  update,
 };

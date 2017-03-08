@@ -24,4 +24,13 @@ router.post('/shows', (req, res, next) => {
     .then(show => res.status(200).json(show))
     .catch(error => next(error));
 });
+
+// *** update show *** //
+router.put('/shows/:id', (req, res, next) => {
+  queries.update(req.params.id, req.body)
+    .then(() => queries.getSingle(req.params.id))
+    .then(show => res.status(200).json(show))
+    .catch(error => next(error));
+});
+
 module.exports = router;
