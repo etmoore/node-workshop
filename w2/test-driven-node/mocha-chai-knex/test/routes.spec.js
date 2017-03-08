@@ -1,14 +1,28 @@
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
-var should = chai.should();
 var chaiHttp = require('chai-http');
 var server = require('../app');
+var knex = require('../db/knex');
 
+var should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('API Routes', function(){
+
+  beforeEach((done) => {
+    knex.migrate.rollback()
+      .then(() => knex.migrate.latest())
+      .then(() => knex.seed.run())
+      .then(() => done());
+  });
+
+  afterEach((done) => {
+    knex.migrate.rollback()
+      .then(() => done());
+  });
+
   describe('GET /api/v1/shows', function(){
     it('should return all shows', function(done){
       chai.request(server)
