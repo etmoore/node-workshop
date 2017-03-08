@@ -1,10 +1,10 @@
 # Outline
 
-v0.0.2
+v0.0.7
 
 ### End Goal
 
-Build a full-stack application with Node, Express, Postgres React, and Redux.
+Build a full-stack application with Node, Express, Postgres, React, and Redux.
 
 ### Example Code
 
@@ -13,9 +13,9 @@ Make sure to create a new directory on your machine called "node-workshop" to ho
 ## Timeline
 
 1. 02/26 - 7:30am to 11:30am
-1. 03/05 - 8:00am to 4:00pm
-1. 03/11 - morning
-1. 03/19 - free all day
+1. 03/05 - 8:00am to 2:30pm
+1. 03/11 - 7:00am to 2:00pm
+1. 03/19 - 8:00am to 4:00pm
 
 ## Day 0
 
@@ -56,14 +56,15 @@ By the end of this session, you should be able to...
 ### Info
 
 - Topics: Node/Express, RESTful APIs, Single Page Applications, jQuery
-- Duration: 6 to 7 hours
+- Duration: 5 to 6 hours
 
 ### Objectives
 
 By the end of this session, you should be able to...
 
 1. Develop a RESTful API with Node and Express
-1. Describe Single Page Applications (SPAs) and how they differ from the monolithic architecture
+1. Describe how the microservice architecture differs from the monolithic architecture along with how single page apps differ from multi page apps
+1. Describe service oriented architecture
 1. Add jQuery to client-side, build SPA
 
 ### Outline
@@ -71,23 +72,50 @@ By the end of this session, you should be able to...
 1. Stand-up:
   - How did the homework go?
   - What did we cover last time?
-1. Single Page Apps (SPA) Theory
-1. SPA Practice
+1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
+1. SPA Practice - add a [jQuery client-side](exercises/node-jobs-client)
 1. Homework
-  - Review Knex + Postgres
+  - Finish [node-jobs-client](exercises/node-jobs-client) - DONE
+  - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
   - Go through [Intro to React](https://github.com/mjhea0/react-intro)
+  - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
+  - Review as much of [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (up to Redux)
 
 ## Day 3
 
-Outline:
+### Info
 
-- Postgres
-- React
+- Topics: Postgres, Knex, React
+- Duration: 6 to 7 hours
+
+### Objectives
+
+By the end of this session, you should be able to...
+
+1. Set up a project with knex.js
+1. Write schema migration files with knex to create new database tables
+1. Generate database seed files with knex and apply the seeds to the database
+1. Perform the basic CRUD functions on a RESTful resource with knex methods
+1. Describe why you would want to use React
+1. Create a React boilerplate with [Create-React-App](https://github.com/facebookincubator/create-react-app)
+1. Develop a multi-component React app
+1. Use Axious to make AJAX requests in a React component
+
+### Outline
+
+1. Stand-up:
+  - How did the homework go?
+  - What did we cover last time?
+1. Postgres
+1. Knex
+1. React
 
 ## Day 4
 
-Outline:
+Topics:
 
+- Gulp
+- Testing
 - Redux
 - Capstone planning
 - Agile
