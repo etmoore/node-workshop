@@ -27,6 +27,11 @@ router.post('/shows', (req, res, next) => {
 
 // *** update show *** //
 router.put('/shows/:id', (req, res, next) => {
+  if (req.body.hasOwnProperty('id')) {
+    return res.status(422).json({
+      error: 'You cannot update the id field',
+    });
+  }
   queries.update(req.params.id, req.body)
     .then(() => queries.getSingle(req.params.id))
     .then(show => res.status(200).json(show))

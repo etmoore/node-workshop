@@ -125,5 +125,22 @@ describe('API Routes', function(){
           done();
         });
     });
+    it('should NOT update a show if the id field is part of the request', function(done) {
+      chai.request(server)
+        .put('/api/v1/shows/1')
+        .send({
+          id: 20,
+          rating: 4,
+          explicit: true
+        })
+        .end(function(err, res) {
+          res.should.have.status(422);
+          res.should.be.json; // jshint ignore:line
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('You cannot update the id field');
+          done();
+        });
+    });
   });
 });
