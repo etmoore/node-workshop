@@ -12,7 +12,12 @@ function getSingle(showID) {
   return Shows().where('id', parseInt(showID)).first(); // jshint ignore:line
 }
 
+function add(show) {
+  return Shows().insert(show, 'id'); // jshint ignore:line
+}
+
 module.exports = {
   getAll,
   getSingle,
+  add,
 };
