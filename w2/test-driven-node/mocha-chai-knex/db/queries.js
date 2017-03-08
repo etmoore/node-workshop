@@ -1,23 +1,23 @@
 var knex = require('./knex.js');
 
-function Shows() {
-  return knex('shows');
-}
-
 function getAll() {
-  return Shows().select(); // jshint ignore:line
+  return knex('shows').select();
 }
 
 function getSingle(showID) {
-  return Shows().where('id', parseInt(showID)).first(); // jshint ignore:line
+  return knex('shows').where('id', parseInt(showID)).first();
 }
 
 function add(show) {
-  return Shows().insert(show, 'id'); // jshint ignore:line
+  return knex('shows').insert(show, 'id');
 }
 
 function update(showID, updates) {
-  return Shows().where('id', parseInt(showID)).update(updates); // jshint ignore:line
+  return knex('shows').where('id', parseInt(showID)).update(updates);
+}
+
+function deleteItem(showID) {
+  return knex('shows').where('id', parseInt(showID)).del();
 }
 
 module.exports = {
@@ -25,4 +25,5 @@ module.exports = {
   getSingle,
   add,
   update,
+  deleteItem,
 };

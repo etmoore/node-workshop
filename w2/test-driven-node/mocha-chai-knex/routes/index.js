@@ -25,7 +25,7 @@ router.post('/shows', (req, res, next) => {
     .catch(error => next(error));
 });
 
-// *** update show *** //
+/* PUT update show */
 router.put('/shows/:id', (req, res, next) => {
   if (req.body.hasOwnProperty('id')) {
     return res.status(422).json({
@@ -37,5 +37,16 @@ router.put('/shows/:id', (req, res, next) => {
     .then(show => res.status(200).json(show))
     .catch(error => next(error));
 });
+
+/* DELETE show */
+router.delete('/shows/:id', (req, res, next) => {
+  queries.getSingle(req.params.id)
+    .then(show => {
+      queries.deleteItem(req.params.id)
+        .then(() => res.status(200).json(show));
+    })
+    .catch(error => next(error));
+});
+
 
 module.exports = router;
