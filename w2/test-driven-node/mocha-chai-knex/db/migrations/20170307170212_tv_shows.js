@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.string('name').notNullable().unique();
     table.string('channel').notNullable();
     table.string('genre').notNullable();
-    table.string('rating').notNullable();
+    table.integer('rating').notNullable();
     table.boolean('explicit').notNullable();
   });
 };
