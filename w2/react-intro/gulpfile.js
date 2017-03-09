@@ -12,6 +12,7 @@ gulp.task('lint', () => {
   gulp.src([ // gulp the gulpfile and any js files in src
     'gulpfile.js',
     'src/**/*js',
+    'src/**/*jsx',
   ])
     .pipe(eslint()) // run it through eslint linter
     .pipe(eslint.format()) // outputs the lint results to the console
