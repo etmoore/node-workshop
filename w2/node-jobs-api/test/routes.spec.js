@@ -30,7 +30,32 @@ describe('API Routes', function(){
           res.body[0].contacted.should.equal(true);
           done();
         });
-    })
+    });
+  });
+
+  describe('GET /:id', () => {
+    it('should return a single show with the id', (done) => {
+      chai.request(server)
+        .get('/2')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('id');
+          res.body.id.should.equal(2);
+          res.body.should.have.property('title');
+          res.body.title.should.equal('lead architect');
+          res.body.should.have.property('description');
+          res.body.description.should.equal('work work work');
+          res.body.should.have.property('company');
+          res.body.company.should.equal('Microsoft');
+          res.body.should.have.property('email');
+          res.body.email.should.equal('manager@example.com');
+          res.body.should.have.property('contacted');
+          res.body.contacted.should.equal(false);
+          done();
+        });
+    });
   });
 });
 
