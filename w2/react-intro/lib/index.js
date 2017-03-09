@@ -1,3 +1,6 @@
 'use strict';
 
-console.log('hello world');
+var Cat = require('./cats');
+
+var toby = new Cat('Toby');
+console.log(toby.meow());
