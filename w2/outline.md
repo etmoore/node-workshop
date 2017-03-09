@@ -76,8 +76,8 @@ By the end of this session, you should be able to...
 1. SPA Practice - add a [jQuery client-side](exercises/node-jobs-client)
 1. Homework
   - Finish [node-jobs-client](exercises/node-jobs-client) - DONE
-  - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node)
-  - Go through [Intro to React](https://github.com/mjhea0/react-intro)
+  - Go through [Test Driven Development With Node, Postgres, and Knex (Red/Green/Refactor)](http://mherman.org/blog/2016/04/28/test-driven-development-with-node) - DONE
+  - Go through [Intro to React](https://github.com/mjhea0/react-intro) - DONE
   - Add server-side, integration tests to the [node-jobs-api](exercises/node-jobs-api)
   - Review as much of [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) that you can get through (up to Redux)
 
