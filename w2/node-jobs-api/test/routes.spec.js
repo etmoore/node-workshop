@@ -57,5 +57,55 @@ describe('API Routes', function(){
         });
     });
   });
+
+  describe('POST /', () => {
+    it('should create a new job', (done) => {
+      chai.request(server)
+        .post('/')
+        .send({
+          title: 'Senior Solutions Architect',
+          description: 'Design solutions all day long',
+          company: 'NodeGorge',
+          email: 'manager@nodegorge.com',
+          contacted: false
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('id');
+          res.body.id.should.equal(4);
+          res.body.should.have.property('title');
+          res.body.title.should.equal('Senior Solutions Architect');
+          res.body.should.have.property('description');
+          res.body.description.should.equal('Design solutions all day long');
+          res.body.should.have.property('company');
+          res.body.company.should.equal('NodeGorge');
+          res.body.should.have.property('email');
+          res.body.email.should.equal('manager@nodegorge.com');
+          res.body.should.have.property('contacted');
+          res.body.contacted.should.equal(false);
+          done();
+        });
+    });
+    it('should NOT create a job missing a title', (done) => {
+      chai.request(server)
+        .post('/')
+        .send({
+          description: 'Design solutions all day long',
+          company: 'NodeGorge',
+          email: 'manager@nodegorge.com',
+          contacted: false
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.equal('Please make a POST request with the required Job data');
+          done();
+        });
+    });
+  });
 });
 
