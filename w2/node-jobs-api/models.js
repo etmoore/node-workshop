@@ -65,6 +65,7 @@ function getJob(id){
 }
 
 function updateJob(data, id){
+  console.log(data);
   return new Promise((resolve, reject) => {
     if (!data || !id)
       reject('Unable to complete request');

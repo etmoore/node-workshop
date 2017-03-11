@@ -107,5 +107,29 @@ describe('API Routes', function(){
         });
     });
   });
+  describe ('PUT /:id', () => {
+    it ('should update a job', (done) => {
+      chai.request(server)
+        .put('/2')
+        .send({
+          title: 'subservient architect',
+          description: 'follow the lead architect',
+          company: 'Microsoft',
+          email: 'manager@example.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('id');
+          res.body.id.should.equal(2);
+          res.body.should.have.property('title');
+          res.body.title.should.equal('subservient architect');
+          res.body.should.have.property('description');
+          res.body.description.should.equal('follow the lead architect');
+          done();
+        });
+    });
+  });
 });
 
