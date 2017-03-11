@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const model = require('../models.js');
+const model = require('../db/models.js');
 
 /*** all jobs ***/
 router.get('/', (req, res, next) => {
@@ -11,10 +11,9 @@ router.get('/', (req, res, next) => {
 
 /*** single job ***/
 router.get('/:id', (req, res, next) => {
-  let id = parseInt(req.params.id);
-  model.getJob(id)
+  model.getJob(req.params.id)
     .then(job => res.json(job))
-    .catch(err => res.status(404).json({error: err}));
+    .catch(err => next(err));
 });
 
 /*** new job***/
@@ -26,8 +25,7 @@ router.post('/', (req, res, next) => {
 
 /*** update job ***/
 router.put('/:id', (req, res, next) => {
-  let id = parseInt(req.params.id);
-  model.updateJob(req.body, id)
+  model.updateJob(req.body, req.params.id)
     .then(job => res.json(job))
     .catch(err => res.status(400).send(err));
 });
