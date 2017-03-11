@@ -107,6 +107,7 @@ describe('API Routes', function(){
         });
     });
   });
+
   describe ('PUT /:id', () => {
     it ('should update a job', (done) => {
       chai.request(server)
@@ -127,6 +128,29 @@ describe('API Routes', function(){
           res.body.title.should.equal('subservient architect');
           res.body.should.have.property('description');
           res.body.description.should.equal('follow the lead architect');
+          done();
+        });
+    });
+  });
+
+  describe('DELETE /:id', () => {
+    it('should delete a job', (done) => {
+      chai.request(server)
+        .delete('/2')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('status');
+          res.body.status.should.equal('success');
+        });
+
+      chai.request(server)
+        .get('/')
+        .end((err, res) => {
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body.length.should.equal(3); // not sure why... but this is failing
           done();
         });
     });

@@ -48,6 +48,7 @@ function hasRequiredFields(jobObj){
 }
 
 function getAllJobs(){
+  console.log('inside get request', jobs);
   return new Promise((resolve, reject) => {
     if (jobs) resolve(jobs);
     else reject('Not Found');
@@ -93,12 +94,14 @@ function createNewJob(newJob){
 }
 
 function deleteJob(id) {
+  console.log('inside delete request', jobs);
+  console.log('id', id);
   return new Promise((resolve, reject) => {
     if (jobs.filter(job => job.id === id).length === 0) {
       reject('Job does not exist');
     }
     jobs = jobs.filter(job => job.id !== id);
-    resolve({ status: 'Success' });
+    resolve({ status: 'success' });
   });
 }
 
