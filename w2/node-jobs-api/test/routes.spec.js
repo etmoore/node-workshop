@@ -1,11 +1,26 @@
-var chai = require('chai');
-var chaiHttp = require('chai-http');
-var server = require('../app');
+process.env.NODE_ENV = 'test';
 
-var should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../app');
+const knex = require('../db/knex');
+
+const should = chai.should();
 chai.use(chaiHttp);
 
-describe('API Routes', function(){
+describe('API Routes', () => {
+
+  beforeEach((done) => {
+    knex.migrate.rollback()
+      .then(() => knex.migrate.latest())
+      .then(() => knex.seed.run())
+      .then(() => done());
+  });
+
+  afterEach((done) => {
+    knex.migrate.rollback()
+      .then(() => done());
+  });
 
   describe('GET /', () => {
     it('should return all shows', (done) => {
@@ -98,11 +113,11 @@ describe('API Routes', function(){
           contacted: false
         })
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(500);
           res.should.be.json;
           res.body.should.be.a('object');
           res.body.should.have.property('error');
-          res.body.error.should.equal('Please make a POST request with the required Job data');
+          res.body.error.should.include('null value in column "title" violates not-null constraint');
           done();
         });
     });
