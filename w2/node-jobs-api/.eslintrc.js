@@ -4,8 +4,8 @@ module.exports = {
     "react"
   ],
   "rules": {
-    "no-unused-expression": "off",
-  }
+    "no-unused-expressions": "off",
+  },
   "globals": {
     "describe": "false",
     "it": "false",
