@@ -109,7 +109,7 @@ By the end of this session, you should be able to...
 1. Tests - add integration tests with mocha and chai
 1. Homework
   - Finish writing tests - DONE
-  - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 1 to 17
+  - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 1 to 17 - DONE
 
 ## Day 4
 
