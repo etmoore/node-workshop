@@ -1,23 +1,23 @@
 const knex = require('./knex');
 
-function getAllJobs(){
+function getAllJobs() {
   return knex('jobs').select();
 }
 
-function getJob(id){
-  return knex('jobs').where('id', parseInt(id)).first();
+function getJob(id) {
+  return knex('jobs').where('id', parseInt(id, 10)).first();
 }
 
-function updateJob(data, id){
-  return knex('jobs').where('id', parseInt(id)).update(data);
+function updateJob(data, id) {
+  return knex('jobs').where('id', parseInt(id, 10)).update(data);
 }
 
-function createNewJob(newJob){
+function createNewJob(newJob) {
   return knex('jobs').insert(newJob, 'id');
 }
 
 function deleteJob(id) {
-  return knex('jobs').where('id', parseInt(id)).del();
+  return knex('jobs').where('id', parseInt(id, 10)).del();
 }
 
 module.exports = {
@@ -27,4 +27,3 @@ module.exports = {
   updateJob,
   deleteJob,
 };
-;

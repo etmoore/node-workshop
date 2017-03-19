@@ -6,27 +6,25 @@ const server = require('../app');
 const knex = require('../db/knex');
 const models = require('../db/models');
 
-const should = chai.should();
+chai.should();
 chai.use(chaiHttp);
 
 describe('API Routes', () => {
-
-  beforeEach(() => {
-    return knex.migrate.rollback()
+  beforeEach(() => (
+    knex.migrate.rollback()
       .then(() => knex.migrate.latest())
       .then(() => knex.seed.run())
-  });
+  ));
 
-  afterEach(() => {
-    return knex.migrate.rollback()
-  });
+  afterEach(() => (
+    knex.migrate.rollback()
+  ));
 
   describe('GET /', () => {
     it('should return all shows', () => {
       chai.request(server)
         .get('/')
         .end((err, res) => {
-          console.log(err);
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
@@ -50,7 +48,7 @@ describe('API Routes', () => {
   describe('GET /:id', () => {
     it('should return a single show with the id', () => {
       models.getAllJobs()
-        .then(jobs => {
+        .then((jobs) => {
           const job = jobs[0];
           chai.request(server)
             .get(`/${job.id}`)
@@ -78,7 +76,7 @@ describe('API Routes', () => {
           description: 'Design solutions all day long',
           company: 'NodeGorge',
           email: 'manager@nodegorge.com',
-          contacted: false
+          contacted: false,
         })
         .end((err, res) => {
           res.should.have.status(200);
@@ -105,7 +103,7 @@ describe('API Routes', () => {
           description: 'Design solutions all day long',
           company: 'NodeGorge',
           email: 'manager@nodegorge.com',
-          contacted: false
+          contacted: false,
         })
         .end((err, res) => {
           res.should.have.status(500);
@@ -117,8 +115,8 @@ describe('API Routes', () => {
     });
   });
 
-  describe ('PUT /:id', () => {
-    it ('should update a job', () => {
+  describe('PUT /:id', () => {
+    it('should update a job', () => {
       chai.request(server)
         .put('/2')
         .send({
