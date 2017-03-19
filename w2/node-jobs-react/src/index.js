@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import JobList from './components/JobList';
+import NewJobForm from './components/NewJobForm';
 
 class App extends Component {
   constructor() {
@@ -17,9 +18,11 @@ class App extends Component {
     this.getJobs()
   }
 
-  addJob(e) {
-    e.preventDefault();
-    console.log('yeah! you added a job');
+  addJob(data) {
+    axios.post('http://localhost:8080/', data)
+      .then(() => {
+        this.getJobs();
+      });
   }
 
   getJobs() {
@@ -45,30 +48,9 @@ class App extends Component {
         <button className="btn btn-primary" onClick={() => this.toggleShowForm()}>{ this.state.showForm ? 'Cancel' : 'Add Job' }</button>
 
         { this.state.showForm &&
-          <form onSubmit={ (e) => this.addJob(e) }>
-            <div className="form-group">
-              <label htmlFor="title">Title</label>
-              <input type="text" name="title" className="form-control" id="title" defaultValue="job title"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              <textarea className="form-control" rows="3" id="description" defaultValue="this is a description"></textarea>
-            </div>
-            <div className="form-group">
-              <label htmlFor="company">Company</label>
-              <input type="text" name="company" className="form-control" id="company" defaultValue="job title"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" className="form-control" id="email" defaultValue="email@example.com"/>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" name="contacted"/> Contacted?
-              </label>
-            </div>
-            <button type="submit" className="btn btn-default">Submit</button>
-          </form>
+          <NewJobForm
+            addJob={this.addJob.bind(this)}
+            toggleShowForm={this.toggleShowForm.bind(this)} />
         }
 
         { !this.state.showForm &&
