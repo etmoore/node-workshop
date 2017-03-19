@@ -4,6 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../app');
 const knex = require('../db/knex');
+const models = require('../db/models');
 
 const should = chai.should();
 chai.use(chaiHttp);
@@ -48,24 +49,22 @@ describe('API Routes', () => {
 
   describe('GET /:id', () => {
     it('should return a single show with the id', () => {
-      chai.request(server)
-        .get('/2')
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body.should.have.property('id');
-          res.body.id.should.equal(2);
-          res.body.should.have.property('title');
-          res.body.title.should.equal('lead architect');
-          res.body.should.have.property('description');
-          res.body.description.should.equal('work work work');
-          res.body.should.have.property('company');
-          res.body.company.should.equal('Microsoft');
-          res.body.should.have.property('email');
-          res.body.email.should.equal('manager@example.com');
-          res.body.should.have.property('contacted');
-          res.body.contacted.should.equal(false);
+      models.getAllJobs()
+        .then(jobs => {
+          const job = jobs[0];
+          chai.request(server)
+            .get(`/${job.id}`)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.should.be.json;
+              res.body.should.be.a('object');
+              res.body.should.have.property('id');
+              res.body.should.have.property('title');
+              res.body.should.have.property('description');
+              res.body.should.have.property('company');
+              res.body.should.have.property('email');
+              res.body.should.have.property('contacted');
+            });
         });
     });
   });
