@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import JobList from './components/JobList';
+
 class App extends Component {
   constructor() {
     super()
@@ -28,13 +30,7 @@ class App extends Component {
     return (
       <div className="container">
       <h1>Node Jobs</h1>
-      <ul>
-      {
-        this.state.jobs.map((job) => {
-          return <li key={ job.id }>{ job.title }</li>
-        })
-      }
-      </ul>
+      <JobList jobs={this.state.jobs}/>
       </div>
     )
   }
