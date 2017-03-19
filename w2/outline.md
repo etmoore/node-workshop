@@ -105,10 +105,10 @@ By the end of this session, you should be able to...
 1. Stand-up:
   - How did the homework go? How long did it take?
   - What did we cover last time?
-1. [Postgres + Knex](w2/lessons/02-pg.md)
+1. [Postgres + Knex](lessons/02-pg.md)
 1. Tests - add integration tests with mocha and chai
 1. Homework
-  - Finish writing tests
+  - Finish writing tests - DONE
   - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 1 to 17
 
 ## Day 4
