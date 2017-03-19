@@ -10,23 +10,22 @@ chai.use(chaiHttp);
 
 describe('API Routes', () => {
 
-  beforeEach((done) => {
-    knex.migrate.rollback()
+  beforeEach(() => {
+    return knex.migrate.rollback()
       .then(() => knex.migrate.latest())
       .then(() => knex.seed.run())
-      .then(() => done());
   });
 
-  afterEach((done) => {
-    knex.migrate.rollback()
-      .then(() => done());
+  afterEach(() => {
+    return knex.migrate.rollback()
   });
 
   describe('GET /', () => {
-    it('should return all shows', (done) => {
+    it('should return all shows', () => {
       chai.request(server)
         .get('/')
         .end((err, res) => {
+          console.log(err);
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
@@ -43,13 +42,12 @@ describe('API Routes', () => {
           res.body[0].email.should.equal('boss@example.com');
           res.body[0].should.have.property('contacted');
           res.body[0].contacted.should.equal(true);
-          done();
         });
     });
   });
 
   describe('GET /:id', () => {
-    it('should return a single show with the id', (done) => {
+    it('should return a single show with the id', () => {
       chai.request(server)
         .get('/2')
         .end((err, res) => {
@@ -68,13 +66,12 @@ describe('API Routes', () => {
           res.body.email.should.equal('manager@example.com');
           res.body.should.have.property('contacted');
           res.body.contacted.should.equal(false);
-          done();
         });
     });
   });
 
   describe('POST /', () => {
-    it('should create a new job', (done) => {
+    it('should create a new job', () => {
       chai.request(server)
         .post('/')
         .send({
@@ -100,10 +97,9 @@ describe('API Routes', () => {
           res.body.email.should.equal('manager@nodegorge.com');
           res.body.should.have.property('contacted');
           res.body.contacted.should.equal(false);
-          done();
         });
     });
-    it('should NOT create a job missing a title', (done) => {
+    it('should NOT create a job missing a title', () => {
       chai.request(server)
         .post('/')
         .send({
@@ -118,13 +114,12 @@ describe('API Routes', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('error');
           res.body.error.should.include('null value in column "title" violates not-null constraint');
-          done();
         });
     });
   });
 
   describe ('PUT /:id', () => {
-    it ('should update a job', (done) => {
+    it ('should update a job', () => {
       chai.request(server)
         .put('/2')
         .send({
@@ -143,13 +138,12 @@ describe('API Routes', () => {
           res.body.title.should.equal('subservient architect');
           res.body.should.have.property('description');
           res.body.description.should.equal('follow the lead architect');
-          done();
         });
     });
   });
 
   describe('DELETE /:id', () => {
-    it('should delete a job', (done) => {
+    it('should delete a job', () => {
       chai.request(server)
         .delete('/2')
         .end((err, res) => {
@@ -166,7 +160,6 @@ describe('API Routes', () => {
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(3); // not sure why... but this is failing
-          done();
         });
     });
   });
