@@ -1,6 +1,6 @@
 # Outline
 
-v0.0.8
+v0.0.10
 
 ### End Goal
 
@@ -71,7 +71,7 @@ By the end of this session, you should be able to...
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
 1. [Microservices vs Monolithic Architecture](https://www.mulesoft.com/resources/api/microservices-vs-monolithic)
 1. SPA Practice - add a [jQuery client-side](exercises/node-jobs-client)
@@ -86,7 +86,7 @@ By the end of this session, you should be able to...
 
 ### Info
 
-- Topics: Postgres, Knex
+- Topics: Postgres, Knex, Testing
 - Duration: 3 to 4 hours
 
 ### Objectives
@@ -103,7 +103,7 @@ By the end of this session, you should be able to...
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
 1. [Postgres + Knex](lessons/02-pg.md)
 1. Tests - add integration tests with mocha and chai
@@ -115,34 +115,46 @@ By the end of this session, you should be able to...
 
 ### Info
 
-- Topics: React
+- Topics: Gulp, React
 - Duration: 6 to 7 hours
 
 ### Objectives
 
 By the end of this session, you should be able to...
 
+1. Describe Gulp
+1. Set up basic Gulp Tasks
+1. Add esline to Gulp
 1. Create a React boilerplate with [Create-React-App](https://github.com/facebookincubator/create-react-app)
-1. Describe the following React components - JSX, components, props, state
+1. Describe the following React terms - JSX, components, props, state, virtual dom
 1. Develop a multi-component React app
 1. Make AJAX requests within a React component
 
 ### Outline
 
 1. Stand-up:
-  - How did the homework go?
+  - How did the homework go? How long did it take?
   - What did we cover last time?
+1. Test Review
+1. [Gulp](w2/lessons/04-gulp.md)
 1. [React](w2/lessons/03-react.md)
+  - Add buttons for "Add Job", "delete", "update"
+  - Components
+    - Add job form
+    - Update job form
+  - Delete Job
 1. Homework
-  - ??
-
+  - Finish adding the add job, update job, and delete job components
+  - Finish [30 Days of React](https://www.fullstackreact.com/30-days-of-react/) - day 18 to 30
+  - OPTIONAL: Refactor add and update job components to utilize modals
 
 ## Day 5
 
-Topics:
-
-- Gulp
 - Redux
+
+## Other
+
+- Gulp Build Process
 - Capstone planning
 - Agile
 - Feature branch workflow
