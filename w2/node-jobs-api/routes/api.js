@@ -1,22 +1,23 @@
 const express = require('express');
-const router = express.Router();
 const model = require('../db/models.js');
 
-/*** all jobs ***/
+const router = express.Router();
+
+/* all jobs */
 router.get('/', (req, res, next) => {
   model.getAllJobs()
     .then(jobs => res.json(jobs))
     .catch(err => next(err));
 });
 
-/*** single job ***/
+/* single job */
 router.get('/:id', (req, res, next) => {
   model.getJob(req.params.id)
     .then(job => res.json(job))
     .catch(err => next(err));
 });
 
-/*** new job***/
+/* new job */
 router.post('/', (req, res, next) => {
   model.createNewJob(req.body)
     .then(newJobId => model.getJob(newJobId))
@@ -24,21 +25,21 @@ router.post('/', (req, res, next) => {
     .catch(err => next(err));
 });
 
-/*** update job ***/
+/* update job */
 router.put('/:id', (req, res, next) => {
   model.updateJob(req.body, req.params.id)
-    .then(numOfAffectedRows => model.getJob(req.params.id))
+    .then(() => model.getJob(req.params.id))
     .then(updatedJob => res.json(updatedJob))
     .catch(err => next(err));
 });
 
 
-/*** delete job ***/
+/* delete job */
 router.delete('/:id', (req, res, next) => {
-  let id = parseInt(req.params.id);
+  const id = parseInt(req.params.id, 10);
   model.deleteJob(id)
-    .then(numOfAffectedRows=> res.json({status: "success"}))
+    .then(() => res.json({ status: 'success' }))
     .catch(err => next(err));
-})
+});
 
 module.exports = router;

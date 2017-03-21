@@ -1,7 +1,8 @@
 const path = require('path');
+
 const directories = {
   seed: path.join(__dirname, 'db', 'seeds'),
-  migration: path.join(__dirname, 'db', 'migrations')
+  migration: path.join(__dirname, 'db', 'migrations'),
 };
 
 const pgBase = 'postgres://localhost:5432/';
@@ -10,23 +11,23 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: pgBase + 'node_jobs_dev',
+    connection: `${pgBase}node_jobs_dev`,
     migrations: {
-      directory: directories.migration
+      directory: directories.migration,
     },
     seeds: {
-      directory: directories.seed
-    }
+      directory: directories.seed,
+    },
   },
 
   test: {
     client: 'pg',
-    connection: pgBase + 'node_jobs_test',
+    connection: `${pgBase}node_jobs_test`,
     migrations: {
-      directory: directories.migration
+      directory: directories.migration,
     },
     seeds: {
-      directory: directories.seed
-    }
+      directory: directories.seed,
+    },
   },
 };
