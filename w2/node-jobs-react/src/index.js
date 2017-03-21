@@ -47,12 +47,11 @@ class App extends Component {
         <h1>Node Jobs</h1>
         <button className="btn btn-primary" onClick={() => this.toggleShowForm()}>{ this.state.showForm ? 'Cancel' : 'Add Job' }</button>
 
-        { this.state.showForm &&
+        { this.state.showForm && // TODO: Refactor this to use React Router
           <NewJobForm
             addJob={this.addJob.bind(this)}
             toggleShowForm={this.toggleShowForm.bind(this)} />
         }
-
         { !this.state.showForm &&
           <JobList
             jobs={ this.state.jobs }
