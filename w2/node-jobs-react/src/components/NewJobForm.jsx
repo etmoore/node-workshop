@@ -11,6 +11,9 @@ class NewJobForm extends Component {
       email: '',
       contacted: false,
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    // this.createNewJob = this.createNewJob.bind(this);
   }
 
   handleInputChange(event) {
@@ -19,45 +22,75 @@ class NewJobForm extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
-  createNewJob(e){
-    e.preventDefault();
-    const jobData = this.state;
-    this.props.addJob(jobData);
-    this.props.toggleShowForm();
-  }
-
   render() {
+    const { title, description, company, email, contacted } = this.state;
+    const { addJob } = this.props;
     return (
-      <form onSubmit={ (e) => this.createNewJob(e) }>
+      <form onSubmit={event => addJob(event, this.state)}>
         <div className="form-group">
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" className="form-control" id="title" value={this.state.title} onChange={this.handleInputChange.bind(this)} />
+          <input
+            type="text"
+            name="title"
+            className="form-control"
+            id="title"
+            value={title}
+            onChange={this.handleInputChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
-          <textarea className="form-control" name="description" rows="3" id="description" value={this.state.description} onChange={this.handleInputChange.bind(this)}></textarea>
+          <textarea
+            className="form-control"
+            name="description"
+            rows="3" id="description"
+            value={description}
+            onChange={this.handleInputChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="company">Company</label>
-          <input type="text" name="company" className="form-control" id="company" value={this.state.company} onChange={this.handleInputChange.bind(this)} />
+          <input
+            type="text"
+            name="company"
+            className="form-control"
+            id="company"
+            value={company}
+            onChange={this.handleInputChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" className="form-control" id="email" value={this.state.email} onChange={this.handleInputChange.bind(this)}/>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            id="email"
+            value={email}
+            onChange={this.handleInputChange}
+          />
         </div>
         <div className="checkbox">
-          <label>
-            <input type="checkbox" name="contacted" checked={this.state.contacted} onChange={this.handleInputChange.bind(this)} /> Contacted?
+          <label htmlFor="contacted">
+            <input
+              id="contacted"type="checkbox"
+              name="contacted"
+              checked={contacted}
+              onChange={this.handleInputChange}
+            /> Contacted?
           </label>
         </div>
         <button type="submit" className="btn btn-default">Submit</button>
       </form>
-    )
+    );
   }
 }
+NewJobForm.propTypes = {
+  addJob: React.PropTypes.func.isRequired,
+};
 
 export default NewJobForm;

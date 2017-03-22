@@ -1,3 +1,6 @@
+/* eslint react/jsx-filename-extension: "off" */
+/* eslint no-console: ["warn", { allow: ["error"] }] */
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
@@ -7,32 +10,46 @@ import NewJobForm from './components/NewJobForm';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       jobs: [],
       showForm: false,
-    }
+    };
+
+    this.getJobs = this.getJobs.bind(this);
+    this.addJob = this.addJob.bind(this);
+    this.deleteJob = this.deleteJob.bind(this);
+    this.toggleShowForm = this.toggleShowForm.bind(this);
   }
 
-  componentWillMount(){
-    this.getJobs()
-  }
-
-  addJob(data) {
-    axios.post('http://localhost:8080/', data)
-      .then(() => {
-        this.getJobs();
-      });
+  componentWillMount() {
+    this.getJobs();
   }
 
   getJobs() {
-    axios.get(`http://localhost:8080/`)
+    axios.get('http://localhost:8080/')
       .then((res) => {
         this.setState({
           jobs: res.data,
-        })
+        });
       })
-      .catch((err) => { console.log(err); })
+      .catch(console.error);
+  }
+
+  addJob(event, newJobData) {
+    event.preventDefault();
+    axios.post('http://localhost:8080/', newJobData)
+      .then(() => {
+        this.toggleShowForm();
+        this.getJobs();
+      })
+      .catch(console.error);
+  }
+
+  deleteJob(id) {
+    axios.delete(`http://localhost:8080/${id}`)
+      .then(() => this.getJobs())
+      .catch(console.error);
   }
 
   toggleShowForm() {
@@ -42,27 +59,33 @@ class App extends Component {
   }
 
   render() {
+    const { jobs, showForm } = this.state;
     return (
       <div className="container">
         <h1>Node Jobs</h1>
-        <button className="btn btn-primary" onClick={() => this.toggleShowForm()}>{ this.state.showForm ? 'Cancel' : 'Add Job' }</button>
+        <button className="btn btn-primary" onClick={this.toggleShowForm}>
+          { showForm ? 'Cancel' : 'Add Job' }
+        </button>
 
-        { this.state.showForm && // TODO: Refactor this to use React Router
+        {showForm && // TODO: Refactor this to use React Router
           <NewJobForm
-            addJob={this.addJob.bind(this)}
-            toggleShowForm={this.toggleShowForm.bind(this)} />
+            addJob={this.addJob}
+            toggleShowForm={this.toggleShowForm}
+          />
         }
-        { !this.state.showForm &&
+        {!showForm &&
           <JobList
-            jobs={ this.state.jobs }
-            toggleShowForm={this.toggleShowForm.bind(this)} />
+            jobs={jobs}
+            toggleShowForm={this.toggleShowForm}
+            deleteJob={this.deleteJob}
+          />
         }
       </div>
-    )
+    );
   }
 }
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('root'), // eslint-disable-line no-undef
 );
