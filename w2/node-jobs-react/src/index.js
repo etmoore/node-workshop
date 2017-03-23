@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import JobList from './components/JobList';
-import NewJobForm from './components/NewJobForm';
+import JobForm from './components/JobForm';
 
 class App extends Component {
   constructor() {
@@ -68,7 +68,7 @@ class App extends Component {
         </button>
 
         {showForm && // TODO: Refactor this to use React Router
-          <NewJobForm
+          <JobForm
             addJob={this.addJob}
             toggleShowForm={this.toggleShowForm}
           />

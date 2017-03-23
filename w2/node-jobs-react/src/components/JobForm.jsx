@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class NewJobForm extends Component {
+class JobForm extends Component {
   constructor(props) {
     super(props);
 
@@ -13,7 +13,6 @@ class NewJobForm extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.createNewJob = this.createNewJob.bind(this);
   }
 
   handleInputChange(event) {
@@ -89,8 +88,8 @@ class NewJobForm extends Component {
     );
   }
 }
-NewJobForm.propTypes = {
+JobForm.propTypes = {
   addJob: React.PropTypes.func.isRequired,
 };
 
-export default NewJobForm;
+export default JobForm;
