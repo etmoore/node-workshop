@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JobList = (props) => {
   const { jobs, deleteJob } = props;
   return (
     <div>
+      <Link
+        to="/new"
+        className="btn btn-primary"
+      >Add Job
+      </Link>
       <table className="table table-hover">
         <thead>
           <tr>
