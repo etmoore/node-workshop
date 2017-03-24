@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class JobForm extends Component {
   constructor(props) {
@@ -7,6 +8,25 @@ class JobForm extends Component {
 
     this.state = this.props.job;
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentWillMount() {
+    return this.props.jobID && this.getJob(this.props.jobID);
+  }
+
+  getJob(id) {
+    axios.get(`http://localhost:8080/${id}`)
+      .then((res) => {
+        const { title, description, company, email, contacted } = res.data;
+        this.setState({
+          title,
+          description,
+          company,
+          email,
+          contacted,
+        });
+      })
+      .catch(console.error);
   }
 
   handleInputChange(event) {
@@ -99,6 +119,14 @@ JobForm.propTypes = {
     email: React.PropTypes.string,
     contacted: React.PropTypes.bool,
   }),
+  jobID: (props, propName, componentName) => {
+    if (isNaN(props[propName]) && typeof props[propName] !== 'undefined') {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}. Must be numerical or Undefined.`,
+      );
+    }
+    return null;
+  },
 };
 JobForm.defaultProps = {
   job: {
@@ -108,6 +136,7 @@ JobForm.defaultProps = {
     email: '',
     contacted: false,
   },
+  jobID: undefined,
 };
 
 export default JobForm;
