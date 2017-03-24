@@ -42,8 +42,7 @@ const JobList = (props) => {
                   <button
                     className="btn btn-danger"
                     onClick={() => deleteJob(job.id)}
-                  >
-                    Delete Job
+                  >Delete Job
                   </button>
                 </td>
               </tr>

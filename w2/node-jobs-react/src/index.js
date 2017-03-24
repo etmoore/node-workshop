@@ -35,8 +35,8 @@ class App extends Component {
       .catch(console.error);
   }
 
-  addJob(event, newJobData) {
-    axios.post('http://localhost:8080/', newJobData)
+  addJob(event, jobData) {
+    axios.post('http://localhost:8080/', jobData)
       .then(this.getJobs)
       .catch(console.error);
   }
@@ -74,9 +74,10 @@ class App extends Component {
           />
           <Route
             path="/update/:id"
-            render={() => (
+            render={({ match }) => (
               <JobForm
                 saveJob={this.updateJob}
+                jobID={match.params.id}
               />
             )}
           />

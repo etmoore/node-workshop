@@ -21,7 +21,7 @@ class JobForm extends Component {
 
   render() {
     const { title, description, company, email, contacted } = this.state;
-    const { saveJob } = this.props;
+    const { saveJob, jobID } = this.props;
     return (
       <div>
         <Link to="/" className="btn btn-primary"> Cancel </Link>
@@ -82,7 +82,7 @@ class JobForm extends Component {
           <Link
             to="/"
             className="btn btn-default"
-            onClick={event => saveJob(event, this.state)}
+            onClick={event => saveJob(event, this.state, jobID)}
           >Save Job
           </Link>
         </form>
