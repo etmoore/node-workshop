@@ -70,7 +70,11 @@ class App extends Component {
         <div className="container">
           <h1>Node Jobs</h1>
           <button className="btn btn-primary" onClick={this.toggleShowForm}>
-            { showForm ? 'Cancel' : 'Add Job' }
+            {
+              showForm ?
+                <Link to="/">Cancel</Link> :
+                <Link to="/new">Add Job</Link>
+            }
           </button>
           <Route
             exact path="/"
