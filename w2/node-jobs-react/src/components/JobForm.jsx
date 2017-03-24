@@ -21,10 +21,10 @@ class JobForm extends Component {
 
   render() {
     const { title, description, company, email, contacted } = this.state;
-    const { addJob } = this.props;
+    const { saveJob } = this.props;
     return (
       <div>
-        <Link to='/' className="btn btn-primary"> Cancel </Link>
+        <Link to="/" className="btn btn-primary"> Cancel </Link>
         <form>
           <div className="form-group">
             <label htmlFor="title">Title</label>
@@ -82,8 +82,8 @@ class JobForm extends Component {
           <Link
             to="/"
             className="btn btn-default"
-            onClick={event => addJob(event, this.state)}
-          >Submit
+            onClick={event => saveJob(event, this.state)}
+          >Save Job
           </Link>
         </form>
       </div>
@@ -91,7 +91,7 @@ class JobForm extends Component {
   }
 }
 JobForm.propTypes = {
-  addJob: React.PropTypes.func.isRequired,
+  saveJob: React.PropTypes.func.isRequired,
   job: React.PropTypes.shape({
     title: React.PropTypes.string,
     description: React.PropTypes.string,

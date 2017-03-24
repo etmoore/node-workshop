@@ -32,9 +32,11 @@ const JobList = (props) => {
                 <td>{ job.email }</td>
                 <td>{ job.contacted ? 'yes' : 'no' }</td>
                 <td>
-                  <button className="btn btn-default">
-                    Update Job
-                  </button>
+                  <Link
+                    to={`/update/${job.id}`}
+                    className="btn btn-default"
+                  >Update Job
+                  </Link>
                 </td>
                 <td>
                   <button

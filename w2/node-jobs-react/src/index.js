@@ -42,7 +42,6 @@ class App extends Component {
   }
 
   updateJob(event, jobData, id) {
-    event.preventDefault();
     axios.put(`http://localhost:8080/${id}`, jobData)
       .then(this.getJobs)
       .catch(console.error);
@@ -70,10 +69,14 @@ class App extends Component {
             )}
           />
           <Route
-            exact path="/new"
+            path="/new"
+            render={() => <JobForm saveJob={this.addJob} />}
+          />
+          <Route
+            path="/update/:id"
             render={() => (
               <JobForm
-                addJob={this.addJob}
+                saveJob={this.updateJob}
               />
             )}
           />
