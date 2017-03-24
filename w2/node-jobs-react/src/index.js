@@ -2,6 +2,11 @@
 /* eslint no-console: ["warn", { allow: ["error"] }] */
 
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
@@ -61,6 +66,41 @@ class App extends Component {
   render() {
     const { jobs, showForm } = this.state;
     return (
+      <Router>
+        <div className="container">
+          <h1>Node Jobs</h1>
+          <button className="btn btn-primary" onClick={this.toggleShowForm}>
+            { showForm ? 'Cancel' : 'Add Job' }
+          </button>
+          <Route
+            exact path="/"
+            render={() => (
+              <JobList
+                jobs={jobs}
+                toggleShowForm={this.toggleShowForm}
+                deleteJob={this.deleteJob}
+              />
+            )}
+          />
+          <Route
+            exact path="/new"
+            render={() => (
+              <JobForm
+                addJob={this.addJob}
+                toggleShowForm={this.toggleShowForm}
+              />
+            )}
+          />
+        </div>
+      </Router>
+    );
+  }
+}
+
+/*
+  render() {
+    const { jobs, showForm } = this.state;
+    return (
       <div className="container">
         <h1>Node Jobs</h1>
         <button className="btn btn-primary" onClick={this.toggleShowForm}>
@@ -84,6 +124,7 @@ class App extends Component {
     );
   }
 }
+*/
 
 ReactDOM.render(
   <App />,
